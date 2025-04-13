@@ -7,7 +7,9 @@ const months = [
     { name: "Apr", num: 4, img: "4.png"},   
     { name: "May", num: 5, img: "5.png"},   
     { name: "Jun", num: 6, img: "6.png"},   
-    { name: "Jul", num: 7, img: "7.png"},   
+    { name: "Jul", num: 7, img: "7.png"
+      
+    },   
     { name: "Aug", num: 8, img: "8.png"},   
     { name: "Sep", num: 9, img: "9.png"},   
     { name: "Oct", num: 10, img: "10.png"},  
