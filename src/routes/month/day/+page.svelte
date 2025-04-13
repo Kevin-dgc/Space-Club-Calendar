@@ -8,7 +8,7 @@
     $: curDate = $page.url.searchParams.get('date') || "";
 
     function randX(){
-        return Math.floor(Math.random() * (1000 - 100 + 1)) + 100;
+        return Math.floor(Math.random() * 60) + 150
     }
 
     function randY(){
@@ -34,11 +34,15 @@
 }
 
 
-  function randPlanet(){
+function randPlanet(){
     return Math.floor(Math.random() * (7 - 1 + 1)) + 1;
-  }
+}
 
   let dataList = getData();
+
+  function getEventOffset(index) {
+  return index * 40;
+}
 
 </script>
 
