@@ -1,7 +1,7 @@
 <script>
     import "/src/routes/data";
 
-    $: curdate = parseInt($page.url.searchParams.get('date'));
+    $: curdate = parseString(globalThis.$page.url.searchParams.get('date'));
 
     function randX(){
         Math.floor(Math.random() * (1000 - 100 + 1)) + 100;
