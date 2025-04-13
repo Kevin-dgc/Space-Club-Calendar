@@ -1,11 +1,13 @@
 <script>
     import "/src/routes/data";
 
+    $: curdate = parseInt($page.url.searchParams.get('date'));
+
     function randX(){
         Math.floor(Math.random() * (1000 - 100 + 1)) + 100;
     }
 
-    function randY(curY){
+    function randY(){
         Math.floor(Math.random() * (25 - -25 + 1)) + -25;
     }
 
@@ -31,6 +33,10 @@
     return ((hour - 8) * 100) + 50;
   }
 
+  function totalY(time){
+    hour = +time.split(":");
+    return ((hour - 8) * 100) + 50 + randY();
+  }
 
 </script>
 
@@ -58,6 +64,10 @@
     .time-maker{
         position: absolute;
     }
+
+    .box{
+
+    }
 </style>
 
 <!-- Start of Page V -->
@@ -82,5 +92,16 @@
     <h1 class="time-marker" style="top: 1150px;">7:00 PM</h1>
     <h1 class="time-marker" style="top: 1250px;">8:00 PM</h1>
 </div>
+
+data_list
+{#each data_list as data}
+    {#if data.date == curdate}
+        <div class="box">
+            <h2 style="top: {totalY(data.time)}"> 
+                Org: data.org, Event: data.event 
+                </h2>
+        </div>
+    {/if}
+{/each}
 
 
