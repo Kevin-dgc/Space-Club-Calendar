@@ -156,9 +156,14 @@ function groupByTime(events) {
   }
   
   .event-group {
-      position: absolute;
-      width: 90%;
-      left: 5%;
+    position: absolute;
+    width: 90%;
+    left: 5%;
+    
+    /* Add these new properties for grid layout */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
   }
   
   .event-card {
@@ -222,8 +227,7 @@ function groupByTime(events) {
               
               {#each timeGroups as group, groupIndex}
                   {#if group.parsedTime}
-                      <div class="event-group" 
-                           style="top: {((group.parsedTime.hours - 8) + group.parsedTime.minutes/60) * 100}px">
+                      <div class="event-group" style="top: {((group.parsedTime.hours - 8) + group.parsedTime.minutes/60) * 100}px">
                           {#each group.events as event, eventIndex}
                               <div class="event-card card mb-2" style="transform: translateX({eventIndex * 15}px)">
                                   <div class="card-body">
