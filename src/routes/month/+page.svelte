@@ -54,7 +54,7 @@
       {/each}
       
       {#each days as day, i}
-        <a href={`/month/day?date=${selectedMonth.num}/${day}/${currentYear}`}> <!-- This is where the date of the day comes from-->
+        <a href={`/month/day?date=${selectedMonth.num}/${day}/${currentYear}`}>
           <div class="day">
             <div class="day-number">{day}</div>
           </div>
@@ -122,7 +122,7 @@
     font-weight: bold;
   }
   
-  .day-events {
+  /*.day-events {
     margin-top: 25px;
   }
   
@@ -136,5 +136,5 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
+  }*/
   </style>
