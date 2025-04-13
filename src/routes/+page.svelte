@@ -1,7 +1,7 @@
 <!-- 12 month view -->
 
 <script>
-    import "/src/routes/data.js";
+    import "$lib/data.js";
     const months = [   
     { name: "Jan", num: 1, days: 31, img: "months/1BGRemove.png"},   
     { name: "Feb", num: 2, days: 28, img: "months/2BGRemove.png"},   

@@ -1,7 +1,7 @@
 <script>
-    import '/src/routes/data.js';
-    import { addEvent } from '/src/routes/data.js';
-    import { getData } from '/src/routes/data.js';
+    import '$lib/data.js';
+    import { addEvent } from '$lib/data.js';
+    import { getData } from '$lib/data.js';
 
 
 // Bind variables to each of the six text boxes

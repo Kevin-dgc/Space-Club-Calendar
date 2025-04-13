@@ -2,8 +2,8 @@
 
 <script>
     import { page } from '$app/stores';
-    import "/src/routes/data.js";
-    import { getData } from '/src/routes/data.js';
+    import "$lib/data.js";
+    import { getData } from '$lib/data.js';
     let curDate = "";
     $: curDate = $page.url.searchParams.get('date') || "";
 
