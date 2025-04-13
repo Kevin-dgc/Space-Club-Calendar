@@ -111,7 +111,7 @@
 </div>
 {#each dataList as data}
     {#if data.date == curDate}
-        <div class="box" style="position: absolute; top: {totalY(data.time)}px; left: {randX()}px;">
+        <div class="box" style="position: absolute; top: {totalY(data.time)}px; left: 150px;">
             <h2>Org: {data.org}, Event: {data.name}</h2>
         </div>
     {/if}
