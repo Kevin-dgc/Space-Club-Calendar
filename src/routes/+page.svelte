@@ -19,6 +19,13 @@ const month = [
 </script>
 <h1>{currentYear}</h1>
 
+<div class="months-grid">
+    {#each months as month}
+      <a href="/month/{month.number}" class="month-card">
+        <h2>{month.name}</h2>
+      </a>
+    {/each}
+  </div>
 <style>
 
 </style>
