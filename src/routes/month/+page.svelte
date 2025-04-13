@@ -1,3 +1,4 @@
+<h1>BUTTS BUTTS BUTTS</h1>
 <script>
     import { page } from '$app/stores';
 
