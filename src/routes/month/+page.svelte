@@ -122,7 +122,7 @@
     font-weight: bold;
   }
   
-  .day-events {
+  /*.day-events {
     margin-top: 25px;
   }
   
@@ -136,5 +136,5 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
+  }*/
   </style>
