@@ -4,17 +4,17 @@
     import "/src/routes/data.js";
     const months = [   
     { name: "Jan", num: 1, days: 31, img: "months/1BGRemove.png"},   
-    { name: "Feb", num: 2, days: 28, img: "months/2.png"},   
-    { name: "Mar", num: 3, days: 31, img: "months/3.png"},   
-    { name: "Apr", num: 4, days: 30, img: "months/4.png"},   
-    { name: "May", num: 5, days: 31, img: "months/5.png"},   
-    { name: "Jun", num: 6, days: 30, img: "months/6.png"},   
-    { name: "Jul", num: 7, days: 31, img: "months/7.png"},   
-    { name: "Aug", num: 8, days: 31, img: "months/8.png"},   
-    { name: "Sep", num: 9, days: 30, img: "months/9.png"},   
-    { name: "Oct", num: 10, days: 31, img: "months/10.png"},  
-    { name: "Nov", num: 11, days: 30, img: "months/11.png"},   
-    { name: "Dec", num: 12, days: 31, img: "months/12.png"} ]
+    { name: "Feb", num: 2, days: 28, img: "months/2BGRemove.png"},   
+    { name: "Mar", num: 3, days: 31, img: "months/3BGRemove.png"},   
+    { name: "Apr", num: 4, days: 30, img: "months/4BGRemove.png"},   
+    { name: "May", num: 5, days: 31, img: "months/5BGRemove.png"},   
+    { name: "Jun", num: 6, days: 30, img: "months/6BGRemove.png"},   
+    { name: "Jul", num: 7, days: 31, img: "months/7BGRemove.png"},   
+    { name: "Aug", num: 8, days: 31, img: "months/8BGRemove.png"},   
+    { name: "Sep", num: 9, days: 30, img: "months/9BGRemove.png"},   
+    { name: "Oct", num: 10, days: 31, img: "months/10BGRemove.png"},  
+    { name: "Nov", num: 11, days: 30, img: "months/11BGRemove.png"},   
+    { name: "Dec", num: 12, days: 31, img: "months/12BGRemove.png"} ]
 
 const currentYear = new Date().getFullYear();
 
