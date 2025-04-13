@@ -13,6 +13,7 @@ const months = [
     { name: "Nov", num: 11, img: "months/11.png"},   
     { name: "Dec", num: 12, img: "months/12.png"} ]
 
+
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().getMonth() + 1;
 </script>
