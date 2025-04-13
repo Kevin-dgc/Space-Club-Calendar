@@ -91,6 +91,7 @@ const currentYear = new Date().getFullYear();
   
   h2 {
     margin: 0;
+    color: white;
   }
   
   .month-name {
