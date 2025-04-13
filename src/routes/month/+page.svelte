@@ -21,22 +21,16 @@
     $: monthIndex = parseInt($page.url.searchParams.get('monthIndex') || '0');
     $: selectedMonth = months[monthIndex];
 
-<<<<<<< HEAD
-    $: len = parseInt($page.url.searchParams.get('curLen'));
-    $: num = parseInt($page.url.searchParams.get('curNum'));
-
-</script>
-<h1>Num: {num} Len : {len}</h1>
-
-<style>
-
-</style>
-=======
     $: days = Array.from({ length: selectedMonth.days }, (_, i) => i + 1);
     
     $: firstDayOfMonth = new Date(currentYear, selectedMonth.num - 1, 1).getDay();
     $: blankDays = Array(firstDayOfMonth).fill(null);
   </script>
+
+<div class="calendar-container">
+  <a href="/" class="back-button">← Back to Months</a>
+  <h1>{selectedMonth.name} {currentYear}</h1>
+  
   <div class="calendar">
     <div class="weekday-labels">
       <div>Sun</div>
@@ -47,25 +41,84 @@
       <div>Fri</div>
       <div>Sat</div>
     </div>
-        
+    
     <div class="days-grid">
-        {#each blankDays as _, i}
-          <div class="day blank"></div>
-        {/each}
-        
-        {#each days as day}
-          <div class="day">
-            <div class="day-number">{day}</div>
-            <div class="day-events">
-              {#each monthEvents.filter(event => new Date(event.date).getDate() === day) as event}
-                <div class="event-pill">{event.title}</div>
-              {/each}
-            </div>
+      {#each blankDays as _, i}
+        <div class="day blank"></div>
+      {/each}
+      
+      {#each days as day}
+        <div class="day">
+          <div class="day-number">{day}</div>
+          <div class="day-events">
+            {#each monthEvents.filter(event => new Date(event.date).getDate() === day) as event}
+              <div class="event-pill">{event.title}</div>
+            {/each}
           </div>
-        {/each}
-      </div>
+        </div>
+      {/each}
     </div>
+  </div>
+</div>
+
   <style>
-   
+    .calendar-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .weekday-labels {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+  }
+  
+  .day {
+    min-height: 80px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    padding: 5px;
+    position: relative;
+  }
+  
+  .day.blank {
+    background-color: #f0f0f0;
+  }
+  
+  .day-number {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-weight: bold;
+  }
+  
+  .day-events {
+    margin-top: 25px;
+  }
+  
+  .event-pill {
+    background-color: #e3f2fd;
+    color: #0d47a1;
+    border-radius: 4px;
+    padding: 2px 5px;
+    font-size: 0.8rem;
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   </style>
->>>>>>> 7b09fe63453740604edfd011c41798c6ef5d595f
