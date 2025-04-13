@@ -1,7 +1,7 @@
 <p>Visit <a href="/month">svelte.dev/docs/kit</a> to read the documentation</p>
 <script>
 const months = [   
-    { name: "Jan", num: 1, image: "/placeholder.jpg" },
+    { name: "Jan", num: 1},   
     { name: "Feb", num: 2},   
     { name: "Mar", num: 3},   
     { name: "Apr", num: 4},   
@@ -22,7 +22,7 @@ const months = [
 <div class="months-grid">
     {#each months as month}
       <a href="/month/{month.num}" class="month-card">
-        <h2> {month.num}  </h2>
+        <h2> <img alt="The icon" src={"/favicon.png"} />  </h2>
       </a>
     {/each}
   </div>
