@@ -17,7 +17,14 @@
 
   function totalY(time) {
     let parts = time.split(":");
+    let zone = time.split(" ");
     let hour = +time;
+    if(zone == 'PM'){
+        hour += 12;
+    }
+    if(hour > 12){
+        return; //This is bad, we support 8-8 only
+    }
     return Math.floor((hour - 8) * 100) + 50 + randY();
 }
 
