@@ -62,7 +62,7 @@
 </div>
 
   <style>
-    .calendar-container {
+     .calendar-container {
     max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
@@ -71,6 +71,20 @@
   h1 {
     text-align: center;
     margin-bottom: 30px;
+  }
+  
+  .back-button {
+    display: inline-block;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+  }
+  
+  .back-button:hover {
+    background-color: #e0e0e0;
   }
   
   .weekday-labels {
