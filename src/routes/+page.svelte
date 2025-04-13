@@ -106,4 +106,8 @@ const currentYear = new Date().getFullYear();
   .add_button{
     text-align: center;
   }
+  :global(body) {
+    background-image: url('frontPageBG.png');
+    background-size: cover;
+  }
 </style>
