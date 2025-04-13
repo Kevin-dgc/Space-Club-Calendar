@@ -2,10 +2,11 @@
 <script>
     import { page } from '$app/stores';
 
-    $: monthNum = parseInt($page.url.searchParams.get('month[2].num'));
+    $: len = parseInt($page.url.searchParams.get('curLen'));
+    $: num = parseInt($page.url.searchParams.get('curNum'));
 
 </script>
-<h1>Month: {monthNum}</h1>
+<h1>Num: {num} Len : {len}</h1>
 
 <style>
 
