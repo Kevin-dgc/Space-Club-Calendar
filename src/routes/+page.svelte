@@ -1,6 +1,6 @@
 <p>Visit <a href="/month">svelte.dev/docs/kit</a> to read the documentation</p>
 <script>
-const month = [   
+const months = [   
     { name: "Jan", num: 1},   
     { name: "Feb", num: 2},   
     { name: "Mar", num: 3},   
