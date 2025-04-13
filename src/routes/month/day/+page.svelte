@@ -165,35 +165,53 @@ function groupByTime(events) {
 
 <!-- Start of Page V -->
 
-<a href="/" class="back-button">← Back to Months</a> <!-- this always goes to JAN fix idk-->
-
-<div class="main-title">
-    <h1>{curDate}</h1> 
+<div class="container mt-4">
+  <!-- Back button -->
+  <a href="/month" class="btn btn-light mb-3">← Back to Month</a>
+  
+  <!-- Page title -->
+  <h1 class="text-center text-light mb-4">{formatDate(curDate)}</h1>
+  
+  <!-- Calendar day view -->
+  <div class="row">
+      <div class="col-md-2 time-labels">
+          <!-- Time labels (8 AM to 8 PM) -->
+          {#each Array.from({ length: 13 }, (_, i) => i + 8) as hour}
+              <div class="hour-label" style="top: {(hour - 8) * 100 + 10}px">
+                  {hour > 12 ? (hour - 12) : hour}:00 {hour >= 12 ? 'PM' : 'AM'}
+              </div>
+          {/each}
+      </div>
+      
+      <div class="col-md-10">
+          <div class="calendar-grid position-relative">
+              <!-- Hour grid lines -->
+              {#each Array.from({ length: 13 }, (_, i) => i) as hour}
+                  <div class="hour-line" style="top: {hour * 100}px"></div>
+              {/each}
+              
+              <!-- Events -->
+              {#each timeGroups as group, groupIndex}
+                  {#if group.parsedTime}
+                      <div class="event-group" 
+                           style="top: {((group.parsedTime.hours - 8) + group.parsedTime.minutes/60) * 100}px">
+                          {#each group.events as event, eventIndex}
+                              <div class="event-card card mb-2" 
+                                   style="transform: translateX({eventIndex * 15}px)">
+                                  <div class="card-body">
+                                      <h5 class="card-title">{event.name}</h5>
+                                      <h6 class="card-subtitle mb-2 text-muted">{event.time} - {event.org}</h6>
+                                      <p class="card-text">{event.description}</p>
+                                      {#if event.link}
+                                          <a href="{event.link}" target="_blank" class="card-link">Event Link</a>
+                                      {/if}
+                                  </div>
+                              </div>
+                          {/each}
+                      </div>
+                  {/if}
+              {/each}
+          </div>
+      </div>
+  </div>
 </div>
-
-<div class="time-line">
-    <h1 class="time-marker" style="top: 50px;">8:00 AM</h1>
-    <h1 class="time-marker" style="top: 150px;">9:00 AM</h1>
-    <h1 class="time-marker" style="top: 250px;">10:00 AM</h1>
-    <h1 class="time-marker" style="top: 350px;">11:00 AM</h1>
-    <h1 class="time-marker" style="top: 450px;">12:00 PM</h1>
-    <h1 class="time-marker" style="top: 550px;">1:00 PM</h1>
-    <h1 class="time-marker" style="top: 650px;">2:00 PM</h1>
-    <h1 class="time-marker" style="top: 750px;">3:00 PM</h1>
-    <h1 class="time-marker" style="top: 850px;">4:00 PM</h1>
-    <h1 class="time-marker" style="top: 950px;">5:00 PM</h1>
-    <h1 class="time-marker" style="top: 1050px;">6:00 PM</h1>
-    <h1 class="time-marker" style="top: 1150px;">7:00 PM</h1>
-    <h1 class="time-marker" style="top: 1250px;">8:00 PM</h1>
-</div>
-
-{#each Array.from(groupEventsByTime(dataList, curDate).entries()) as [time, events]}
-  {#each events as event, index}
-    <div class="box" style="position: absolute; top: {totalY(time) + randY()}px; left: {getHorizontalOffset(index)}px;">
-      <h2>Org: {event.org}, Event: {event.name}</h2>
-    </div>
-  {/each}
-{/each} <!-- I had to completely change this because the events would overlap -->
-
-
-
