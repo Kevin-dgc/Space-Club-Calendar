@@ -3,7 +3,7 @@
 
 
 <script>
-
+const month = [   { name: "Jan", num: 1}   { name: "Feb", num: 1}   { name: "Jan", num: 1}   { name: "Jan", num: 1}   { name: "Jan", num: 1}   { name: "Jan", num: 1}   { name: "Jan", num: 1}   { name: "Jan", num: 1}   { name: "Jan", num: 1}   { name: "Jan", num: 1}   { name: "Jan", num: 1}   { name: "Jan", num: 1} ]
 </script>
 
 <style>
