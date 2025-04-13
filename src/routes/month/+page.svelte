@@ -31,6 +31,46 @@
     }
 </script>
 
+<div class="month-view">
+    <div class="header">
+      <a href="/" class="back-button">← Back to All Months</a>
+      <h1>{monthName} {year}</h1>
+    </div>
+    
+    <div class="calendar">
+      <div class="weekdays">
+        <div>Sun</div>
+        <div>Mon</div>
+        <div>Tue</div>
+        <div>Wed</div>
+        <div>Thu</div>
+        <div>Fri</div>
+        <div>Sat</div>
+      </div>
+      
+      <div class="days-grid">
+        {#each calendarDays as { day, isCurrentMonth, date }}
+          <div class="day-cell {isCurrentMonth ? 'current-month' : 'other-month'}">
+            {#if isCurrentMonth}
+              <div class="day-number">{day}</div>
+              <!-- You can add day content here -->
+              <div class="day-content">
+                <!-- Link to a specific day page if needed -->
+                <a href="/month/{monthNumber}/day/{day}" class="day-link">View</a>
+              </div>
+            {/if}
+          </div>
+        {/each}
+      </div>
+    </div>
+    
+    <div class="nav-buttons">
+      <a href="/month/{monthNumber === 1 ? 12 : monthNumber - 1}" class="nav-button">Previous Month</a>
+      <a href="/month/{monthNumber === 12 ? 1 : monthNumber + 1}" class="nav-button">Next Month</a>
+    </div>
+  </div>
+  
+
 <style>
 
 </style>
