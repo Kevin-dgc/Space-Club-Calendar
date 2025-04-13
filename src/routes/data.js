@@ -9,7 +9,7 @@ class Event {
     }
 }
 
-const data_list = [];
+let data_list = [];
 
 function addEvent(org, name, date, time, link, description) {
     const newEvent = new Event(org, name, date, time, link, description);
