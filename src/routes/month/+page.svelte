@@ -55,5 +55,63 @@
       </div>
     </div>
   <style>
-   
+    .calendar-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .weekday-labels {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+  }
+  
+  .day {
+    min-height: 80px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    padding: 5px;
+    position: relative;
+  }
+  
+  .day.blank {
+    background-color: #f0f0f0;
+  }
+  
+  .day-number {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-weight: bold;
+  }
+  
+  .day-events {
+    margin-top: 25px;
+  }
+  
+  .event-pill {
+    background-color: #e3f2fd;
+    color: #0d47a1;
+    border-radius: 4px;
+    padding: 2px 5px;
+    font-size: 0.8rem;
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   </style>
