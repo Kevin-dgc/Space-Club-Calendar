@@ -21,11 +21,17 @@ const months = [
 
 <div class="months-grid">
     {#each months as month}
-      <a href="/month/{month.number}" class="month-card">
-        <h2>{month.name}</h2>
+      <a href="/month/{month.num}" class="month-card">
+        <h2> <img alt="The icon" src={"/favicon.png"} />  </h2>
       </a>
     {/each}
   </div>
 <style>
-
+  .months-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
 </style>
