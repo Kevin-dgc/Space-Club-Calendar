@@ -4,6 +4,7 @@
     import { page } from '$app/stores';
     import "$lib/data.js";
     import { getData } from '$lib/data.js';
+    
     let curDate = "";
     $: curDate = $page.url.searchParams.get('date') || "";
 
