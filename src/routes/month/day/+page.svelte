@@ -126,13 +126,16 @@ function groupEventsByTime(events, date) {
     <h1 class="time-marker" style="top: 1150px;">7:00 PM</h1>
     <h1 class="time-marker" style="top: 1250px;">8:00 PM</h1>
 </div>
-{#each dataList as data}
-    {#if data.date == curDate}
-        <div class="box" style="position: absolute; top: {totalY(data.time)}px; left: 150px;">
-            <h2>Org: {data.org}, Event: {data.name}</h2>
-        </div>
-    {/if}
-{/each}
+{#each Array.from(groupEventsByTime(dataList, curDate).entries()) as [time, events]}
+  {#each events as event, index}
+    <div class="box" style="position: absolute; 
+                           top: {totalY(time)}px; 
+                           left: {randX()}px;
+                           transform: translateY({getEventOffset(index)}px);">
+      <h2>Org: {event.org}, Event: {event.name}</h2>
+    </div>
+  {/each}
+{/each} <!-- I had to completely change this because the events would overlap -->
 
 
 
