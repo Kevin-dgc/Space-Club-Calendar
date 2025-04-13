@@ -35,19 +35,18 @@
   function parseY(time){
     // time ex) 9:00PM
     hour = +time.split(":");
-    return ((hour - 8) * 100) + 50;
+    return Math.floor((hour - 8) * 100) + 50;
   }
 
   function totalY(time){
     hour = +time.split(":");
-    return ((hour - 8) * 100) + 50 + randY();
+    return Math.floor((hour - 8) * 100) + 50 + randY();
   }
 
   function randPlanet(){
     return Math.floor(Math.random() * (7 - 1 + 1)) + 1;
   }
 
-  let planetUrl = `/planet/p${randPlanet()}.png`;
   let dataList = getData();
 
 </script>
@@ -58,7 +57,7 @@
         padding: 0;
         min-height: 100vh;  
         background-color: #0E3E7E;
-        background-image: url(planetUrl);
+        background-image: url(/planet/p1.png);
         background-repeat: no-repeat;
         background-position: center center;  
         background-size: cover; 
@@ -87,28 +86,7 @@
     border-radius: 4px;
     background-color: #f0f0f0;
     }
-  
-    .back-button:hover {
-    background-color: #e0e0e0;
-    }
-
-    .box{
-        min-height: 80px;
-        background-color: #f9f9f9;
-        border-radius: 4px;
-        padding: 5px;
-        position: relative;
-    }
-
 </style>
-
-<svelte:head>
-    <style>
-        body {
-            background-image: url("/planet/p1.png");
-        }
-    </style>
-</svelte:head>
 
 <!-- Start of Page V -->
 
