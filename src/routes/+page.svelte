@@ -3,7 +3,7 @@
 <script>
     import "/src/routes/data.js";
     const months = [   
-    { name: "Jan", num: 1, days: 31, img: "months/1.png"},   
+    { name: "Jan", num: 1, days: 31, img: "months/1BGRemove.png"},   
     { name: "Feb", num: 2, days: 28, img: "months/2.png"},   
     { name: "Mar", num: 3, days: 31, img: "months/3.png"},   
     { name: "Apr", num: 4, days: 30, img: "months/4.png"},   
@@ -94,10 +94,10 @@ const currentYear = new Date().getFullYear();
     color: white;
   }
   
-  .month-name {
+  /* .month-name {
     margin-top: 5px;
     font-size: 1.2rem;
-  }
+  } */
 
   .footer {
     display: flex;

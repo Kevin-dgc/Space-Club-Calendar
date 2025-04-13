@@ -4,7 +4,7 @@
     import { page } from '$app/stores';
     
     const months = [   
-      { name: "January", num: 1, days: 31, img: "months/1.png"},   
+      { name: "January", num: 1, days: 31, img: "months/1BGRemove.png"},   
       { name: "February", num: 2, days: 28, img: "months/2.png"},   
       { name: "March", num: 3, days: 31, img: "months/3.png"},   
       { name: "April", num: 4, days: 30, img: "months/4.png"},   
