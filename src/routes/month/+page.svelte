@@ -1,3 +1,5 @@
+<!-- 30 day view -->
+
 <script>
     import { page } from '$app/stores';
     
@@ -22,9 +24,13 @@
     $: selectedMonth = months[monthIndex];
 
     $: days = Array.from({ length: selectedMonth.days }, (_, i) => i + 1);
+    $: monthNums = Array.from({ length: selectedMonth.num }, (_, i) => i + 1);
+
     
     $: firstDayOfMonth = new Date(currentYear, selectedMonth.num - 1, 1).getDay();
     $: blankDays = Array(firstDayOfMonth).fill(null);
+
+    let date = "3/10/10"
   </script>
 
 <div class="calendar-container">
@@ -47,10 +53,12 @@
         <div class="day blank"></div>
       {/each}
       
-      {#each days as day}
-        <div class="day">
-          <div class="day-number">{day}</div>
-        </div>
+      {#each days as day, i}
+        <a href={`/month/day?date=${selectedMonth.num}/${day}/${currentYear}`}> <!-- This is where the date of the day comes from-->
+          <div class="day">
+            <div class="day-number">{day}</div>
+          </div>
+        </a>
       {/each}
     </div>
   </div>

@@ -1,5 +1,8 @@
+<!-- 12 month view -->
+
 <script>
-  const months = [   
+    import "/src/routes/data.js";
+    const months = [   
     { name: "Jan", num: 1, days: 31, img: "months/1.png"},   
     { name: "Feb", num: 2, days: 28, img: "months/2.png"},   
     { name: "Mar", num: 3, days: 31, img: "months/3.png"},   
@@ -35,6 +38,20 @@ const currentYear = new Date().getFullYear();
       </a>
     {/each}
 </div>
+
+<footer class="footer">
+  <!-- Add / Remove Button -->
+
+  <!-- Add -->
+  <a href="/add_page" class="add_button"> 
+    <h2> Add</h2>
+  </a>
+
+  <!-- Remove -->
+  <a href="/remove_page" class="add_button"> 
+    <h2> Remove</h2>
+  </a>
+</footer>
 
 <style>
   .months-grid {
@@ -78,5 +95,15 @@ const currentYear = new Date().getFullYear();
   .month-name {
     margin-top: 5px;
     font-size: 1.2rem;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+  }
+  .add_button{
+    text-align: center;
   }
 </style>

@@ -1,15 +1,20 @@
-<script>
-    import "/src/routes/data";
+<!-- One day view -->
 
-    $: curdate = parseString(globalThis.$page.url.searchParams.get('date'));
+<script>
+    import { page } from '$app/stores';
+    import "/src/routes/data.js";
+    import { getData } from '/src/routes/data.js';
+    let curDate = "";
+    $: curDate = $page.url.searchParams.get('date') || "";
 
     function randX(){
-        Math.floor(Math.random() * (1000 - 100 + 1)) + 100;
+        return Math.floor(Math.random() * (1000 - 100 + 1)) + 100;
     }
 
     function randY(){
-        Math.floor(Math.random() * (25 - -25 + 1)) + -25;
+        return Math.floor(Math.random() * (25 - -25 + 1)) + -25;
     }
+
 
     let items = [
         { time: "8:00", Y: "50" },
@@ -65,16 +70,36 @@
         position: absolute;
     }
 
-    .box{
-
+    .back-button {
+    display: inline-block;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: #f0f0f0;
     }
+  
+    .back-button:hover {
+    background-color: #e0e0e0;
+    }
+
+    .box{
+        min-height: 80px;
+        background-color: #f9f9f9;
+        border-radius: 4px;
+        padding: 5px;
+        position: relative;
+    }
+
 </style>
 
 <!-- Start of Page V -->
 
+<a href="/month" class="back-button">← Back to Months</a> <!-- this always goes to JAN fix idk-->
 
 <div class="main-title">
-    <h1>date</h1> 
+    <h1>{curDate}</h1> 
 </div>
 
 <div class="time-line">
@@ -92,12 +117,10 @@
     <h1 class="time-marker" style="top: 1150px;">7:00 PM</h1>
     <h1 class="time-marker" style="top: 1250px;">8:00 PM</h1>
 </div>
-
-data_list
-{#each data_list as data}
-    {#if data.date == curdate}
+{#each getData() as data}
+    {#if data.date == curDate}
         <div class="box">
-            <h2 style="top: {totalY(data.time)}"> 
+            <h2 style="top: {totalY(data.time)}, left: {randX()}"> 
                 Org: data.org, Event: data.event 
                 </h2>
         </div>

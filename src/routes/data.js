@@ -11,24 +11,28 @@ class Event {
 
 let data_list = [];
 
-function addEvent(org, name, date, time, link, description) {
+export function addEvent(org, name, date, time, link, description) {
     const newEvent = new Event(org, name, date, time, link, description);
     eventsList.push(newEvent);
 }
 
-function removeData(name){
+export function removeEvent(name){
     for(i = 0; i < data_list.length(); i++){
         if(eventsList[i].name == name){
             eventsList.splice(i, 1);
+            console.log("Found!");
+            return;
         }
     }
+    console.log("Not Found :(");
+
 }
 
-function getData(){
+export function getData(){
     return data_list;
 }
 
-function find_by_date(date_){
+export function find_by_date(date_){
     const day_list = [];
     for(i = 0; i < data_list.length(); i++){
         if(data_list[i].date_ == date_){
@@ -36,4 +40,12 @@ function find_by_date(date_){
         }
     }
     return day_list;
+}
+
+export function save_to_JSON(){
+
+}
+
+export function load_from_JSON(){
+    
 }
