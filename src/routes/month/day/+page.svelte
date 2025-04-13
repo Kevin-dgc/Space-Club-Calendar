@@ -121,7 +121,7 @@ function groupByTime(events) {
 
 <style>
   /* Custom styles - these work with Bootstrap only so dont mess with them pls */
-  :global(body) {
+  .total{
       background-color: #0E3E7E;
       background-image: url(/planet/p1.png);
       background-repeat: no-repeat;
@@ -200,50 +200,51 @@ function groupByTime(events) {
 </style>
 
 <!-- Start of Page V -->
-
-<div class="container mt-4">
-  <!-- Back button -->
-  <a href="/month" class="btn btn-light mb-3">← Back to Month</a>
-  
-  <!-- Page title -->
-  <h1 class="text-center text-light mb-4">{formatDate(curDate)}</h1>
-  
-  <!-- Calendar day view -->
-  <div class="row">
-      <div class="col-md-2 time-labels">
-          <!-- Time labels (8 AM to 8 PM) -->
-          {#each Array.from({ length: 13 }, (_, i) => i + 8) as hour}
-              <div class="hour-label" style="top: {(hour - 8) * 100 + 10}px">
-                  {hour > 12 ? (hour - 12) : hour}:00 {hour >= 12 ? 'PM' : 'AM'}
-              </div>
-          {/each}
-      </div>
-      
-      <div class="col-md-10">
-          <div class="calendar-grid position-relative">
-              {#each Array.from({ length: 13 }, (_, i) => i) as hour}
-                  <div class="hour-line" style="top: {hour * 100}px"></div>
-              {/each}
-              
-              {#each timeGroups as group, groupIndex}
-                  {#if group.parsedTime}
-                      <div class="event-group" style="top: {((group.parsedTime.hours - 8) + group.parsedTime.minutes/60) * 100}px">
-                          {#each group.events as event, eventIndex}
-                              <div class="event-card card mb-2" style="transform: translateX({eventIndex * 15}px)">
-                                  <div class="card-body">
-                                      <h5 class="card-title">{event.name}</h5>
-                                      <h6 class="card-subtitle mb-2 text-muted">{event.time} - {event.org}</h6>
-                                      <p class="card-text">{event.description}</p>
-                                      {#if event.link}
-                                          <a href="{event.link}" target="_blank" class="card-link">Event Link</a>
-                                      {/if}
-                                  </div>
-                              </div>
-                          {/each}
-                      </div>
-                  {/if}
-              {/each}
-          </div>
-      </div>
+<div class="total"> 
+  <div class="container mt-4">
+    <!-- Back button -->
+    <a href="/month" class="btn btn-light mb-3">← Back to Month</a>
+    
+    <!-- Page title -->
+    <h1 class="text-center text-light mb-4">{formatDate(curDate)}</h1>
+    
+    <!-- Calendar day view -->
+    <div class="row">
+        <div class="col-md-2 time-labels">
+            <!-- Time labels (8 AM to 8 PM) -->
+            {#each Array.from({ length: 13 }, (_, i) => i + 8) as hour}
+                <div class="hour-label" style="top: {(hour - 8) * 100 + 10}px">
+                    {hour > 12 ? (hour - 12) : hour}:00 {hour >= 12 ? 'PM' : 'AM'}
+                </div>
+            {/each}
+        </div>
+        
+        <div class="col-md-10">
+            <div class="calendar-grid position-relative">
+                {#each Array.from({ length: 13 }, (_, i) => i) as hour}
+                    <div class="hour-line" style="top: {hour * 100}px"></div>
+                {/each}
+                
+                {#each timeGroups as group, groupIndex}
+                    {#if group.parsedTime}
+                        <div class="event-group" style="top: {((group.parsedTime.hours - 8) + group.parsedTime.minutes/60) * 100}px">
+                            {#each group.events as event, eventIndex}
+                                <div class="event-card card mb-2" style="transform: translateX({eventIndex * 15}px)">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{event.name}</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">{event.time} - {event.org}</h6>
+                                        <p class="card-text">{event.description}</p>
+                                        {#if event.link}
+                                            <a href="{event.link}" target="_blank" class="card-link">Event Link</a>
+                                        {/if}
+                                    </div>
+                                </div>
+                            {/each}
+                        </div>
+                    {/if}
+                {/each}
+            </div>
+        </div>
+    </div>
   </div>
 </div>
