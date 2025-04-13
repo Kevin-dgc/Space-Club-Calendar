@@ -50,17 +50,11 @@
       {#each days as day}
         <div class="day">
           <div class="day-number">{day}</div>
-          <div class="day-events">
-            {#each monthEvents.filter(event => new Date(event.date).getDate() === day) as event}
-              <div class="event-pill">{event.title}</div>
-            {/each}
-          </div>
         </div>
       {/each}
     </div>
   </div>
 </div>
-
   <style>
      .calendar-container {
     max-width: 1000px;

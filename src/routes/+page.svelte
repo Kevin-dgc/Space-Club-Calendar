@@ -19,7 +19,7 @@ const currentYear = new Date().getFullYear();
   let curNum = -1;
 
   function editMonth(num, len){
-      cucurrNum = num;
+      curNum = num;
       curLen = len; //whats this ask kevin in morning
   }
 </script>
