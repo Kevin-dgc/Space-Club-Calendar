@@ -15,17 +15,17 @@
         return Math.floor(Math.random() * (25 - -25 + 1)) + -25;
     }
 
-    function totalY(time) {
-        let parts = time.split(":");
-        let hour = +time;
-        return Math.floor((hour - 8) * 100) + 50 + randY();
-    }
+  function totalY(time) {
+    let parts = time.split(":");
+    let hour = +time;
+    return Math.floor((hour - 8) * 100) + 50 + randY();
+}
 
-    function randPlanet(){
-        return Math.floor(Math.random() * (7 - 1 + 1)) + 1;
-    }
+  function randPlanet(){
+    return Math.floor(Math.random() * (7 - 1 + 1)) + 1;
+  }
 
-    let dataList = getData();
+  let dataList = getData();
 
 </script>
 
@@ -63,6 +63,15 @@
     padding: 5px 10px;
     border-radius: 4px;
     background-color: #f0f0f0;
+    }
+
+    .box{
+        color:black;
+        /* we can make this a rocket ship ^ */
+    }
+
+    h2{
+        color:white;
     }
 </style>
 
