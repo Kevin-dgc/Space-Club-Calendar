@@ -4,8 +4,8 @@ class Event {
       this.name = name; // Name of the Event
       this.date = date; // date of Event
       this.time = time; // time of Event
-      this.link = link;
-      this.description = description;
+      this.link = link; // any link they want 
+      this.description = description; // a description of the event
     }
 }
 
