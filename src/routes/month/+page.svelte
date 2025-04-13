@@ -20,7 +20,11 @@
     
     $: monthIndex = parseInt($page.url.searchParams.get('monthIndex') || '0');
     $: selectedMonth = months[monthIndex];
+
+    $: days = Array.from({ length: selectedMonth.days }, (_, i) => i + 1);
     
+    $: firstDayOfMonth = new Date(currentYear, selectedMonth.num - 1, 1).getDay();
+    $: blankDays = Array(firstDayOfMonth).fill(null);
   </script>
   
   <style>
