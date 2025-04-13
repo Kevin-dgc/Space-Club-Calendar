@@ -22,7 +22,7 @@ const months = [
 <div class="months-grid">
     {#each months as month}
       <a href="/month/{month.num}" class="month-card">
-        <h2> <img alt="The icon" src={month.img} />  </h2>
+        <h2> <img alt="The icon" src={month.img} style="max-width: 100%; height: auto;" />  </h2>
       </a>
     {/each}
   </div>
