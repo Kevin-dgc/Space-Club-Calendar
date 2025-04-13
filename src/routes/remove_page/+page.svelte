@@ -1,6 +1,8 @@
 <script>
     import '/src/routes/data.js';
     import { removeEvent } from '/src/routes/data.js';
+    import { getData } from '/src/routes/data.js';
+
 
 // Bind variables to each of the six text boxes
 let name = '';
@@ -14,7 +16,6 @@ function handleRemove() {
     else{
         removeEvent(name);
         name = '';
-        console.log("Name reset to empty string");
     }
 }
 </script>

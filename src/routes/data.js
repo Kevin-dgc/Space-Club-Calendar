@@ -13,13 +13,13 @@ let data_list = [];
 
 export function addEvent(org, name, date, time, link, description) {
     const newEvent = new Event(org, name, date, time, link, description);
-    eventsList.push(newEvent);
+    data_list.push(newEvent);
 }
 
 export function removeEvent(name){
-    for(i = 0; i < data_list.length(); i++){
-        if(eventsList[i].name == name){
-            eventsList.splice(i, 1);
+    for(let i = 0; i < data_list.length; i++){
+        if(data_list[i].name == name){
+            data_list.splice(i, 1);
             console.log("Found!");
             return;
         }
@@ -34,7 +34,7 @@ export function getData(){
 
 export function find_by_date(date_){
     const day_list = [];
-    for(i = 0; i < data_list.length(); i++){
+    for(i = 0; i < data_list.length; i++){
         if(data_list[i].date_ == date_){
             day_list.push(data_list[i]);
         }

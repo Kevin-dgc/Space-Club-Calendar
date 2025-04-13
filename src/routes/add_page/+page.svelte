@@ -1,6 +1,8 @@
 <script>
     import '/src/routes/data.js';
     import { addEvent } from '/src/routes/data.js';
+    import { getData } from '/src/routes/data.js';
+
 
 // Bind variables to each of the six text boxes
 let org = '';
@@ -13,7 +15,6 @@ let description = '';
 // This function is called when the "Add" button is clicked.
 // It calls the imported function with the six parameters.
 function handleAdd() {
-    console.log("STARTING HANDLEADD");
     if(org == '' || name == '' || date == '' || time == '' || link == '' || description == ''){
         // tell user to input all data
     }
@@ -25,6 +26,7 @@ function handleAdd() {
         time = '';
         link = '';
         description = '';
+        // console.log("Current event list:", getData());
     }
 }
 </script>
