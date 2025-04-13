@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { json } from '@sveltejs/kit';
 
-const DATA_PATH = path.resolve('/src/lib/data.json');
+const DATA_PATH = path.resolve('src/lib/data.json');
 
 export async function GET() {
     const raw = await fs.readFile(DATA_PATH, 'utf-8');
