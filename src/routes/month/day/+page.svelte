@@ -2,40 +2,60 @@
 
 <script>
     import { page } from '$app/stores';
-    import "$lib/data.js";
+    import { onMount } from 'svelte';
+    import { fetchJSON } from '$lib/data.js';
     import { getData } from '$lib/data.js';
     
+    onMount(async () => {
+        await fetchJSON();
+        dataList = getData();
+    });
+
+    let dataList = [];
+
     let curDate = "";
     $: curDate = $page.url.searchParams.get('date') || "";
 
-    function randX(){
+   /* function randX(){
         return Math.floor(Math.random() * 60) + 150
     }
 
     function randY(){
         return Math.floor(Math.random() *20) - 10;
+    } changing this cuz we started using bootstrap*/
+
+    function parseTime(timeStr) {
+        if (!timeStr) return null;
+        
+        const cleanTime = timeStr.trim().toUpperCase();
+        const timeRegex = /(\d+)(?::(\d+))?\s*(AM|PM)/i;
+        const match = cleanTime.match(timeRegex);
+        
+        if (!match) return null;
+        
+        let hours = parseInt(match[1], 10);
+        const minutes = match[2] ? parseInt(match[2], 10) : 0;
+        const period = match[3].toUpperCase();
+        
+        // Convert to 24-hour format
+        if (period === "PM" && hours < 12) {
+            hours += 12;
+        } else if (period === "AM" && hours === 12) {
+            hours = 0;
+        }
+        
+        return { hours, minutes };
     }
 
-  function totalY(time) {
-    const [timePart, period] = time.split(" ");
-    const [hours, minutes] = timePart.split(":").map(num => parseInt(num, 10));
-  
-    // change it to 24-hour format because the plus 12 by itself wasnt working for some reason
-    let hour24 = hours;
-    if (period === "PM" && hours < 12) {
-        hour24 += 12;
-    } else if (period === "AM" && hours === 12) {
-     hour24 = 0;
+    function getTimeSlotClass(time) {
+        const parsedTime = parseTime(time);
+        if (!parsedTime) return '';
+        return `time-${parsedTime.hours}${parsedTime.minutes < 30 ? '' : '-30'}`;
     }
 
-     // Calculate position ask kev if this is okay when im done (so for example 8AM is at 50px, each hour adds 100px)
-    const hourOffset = hour24 - 8; // 8AM is our starting point
-    const minuteOffset = minutes / 60;
-    return Math.floor((hourOffset + minuteOffset) * 100) + 50;
-}
+    $: eventsForDay = dataList.filter(event => event.date === curDate);
 
-
-function randPlanet(){
+/*function randPlanet(){
     return Math.floor(Math.random() * (7 - 1 + 1)) + 1;
 }
 
@@ -48,21 +68,50 @@ function randPlanet(){
 function getHorizontalOffset(index) {
   const baseOffset = 150; 
   return baseOffset + (index * 220);
-}
+}*/
 
-function groupEventsByTime(events, date) {
-  const timeMap = new Map();
-  
-  events.filter(event => event.date === date).forEach(event => {
-    if (!timeMap.has(event.time)) {
-      timeMap.set(event.time, []);
+function groupByTime(events) {
+        const timeGroups = {};
+        
+        events.forEach(event => {
+            const time = event.time;
+            if (!timeGroups[time]) {
+                timeGroups[time] = [];
+            }
+            timeGroups[time].push(event);
+        });
+        
+        return Object.entries(timeGroups).map(([time, events]) => {
+            return {
+                time,
+                parsedTime: parseTime(time),
+                events
+            };
+        }).sort((a, b) => {
+            // Sort by hour and minute
+            if (!a.parsedTime || !b.parsedTime) return 0;
+            if (a.parsedTime.hours !== b.parsedTime.hours) {
+                return a.parsedTime.hours - b.parsedTime.hours;
+            }
+            return a.parsedTime.minutes - b.parsedTime.minutes;
+        });
     }
-    timeMap.get(event.time).push(event);
-  });
-  
-  return timeMap;
-}
 
+    $: timeGroups = groupByTime(eventsForDay);
+
+    function formatDate(dateStr) {
+        if (!dateStr) return '';
+        const [month, day, year] = dateStr.split('/');
+        if (!month || !day || !year) return dateStr;
+        
+        const monthNames = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+        
+        return `${monthNames[parseInt(month) - 1]} ${day}, ${year}`;
+    }
+    
 </script>
 
 <style>
