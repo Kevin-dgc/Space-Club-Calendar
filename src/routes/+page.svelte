@@ -1,18 +1,18 @@
-<p>Visit <a href="/month">svelte.dev/docs/kit</a> to read the documentation</p>
 <script>
 const months = [   
-    { name: "Jan", num: 1, img: "1.png"},   
-    { name: "Feb", num: 2, img: "2.png"},   
-    { name: "Mar", num: 3, img: "3.png"},   
-    { name: "Apr", num: 4, img: "4.png"},   
-    { name: "May", num: 5, img: "5.png"},   
-    { name: "Jun", num: 6, img: "6.png"},   
-    { name: "Jul", num: 7, img: "7.png"},   
-    { name: "Aug", num: 8, img: "8.png"},   
-    { name: "Sep", num: 9, img: "9.png"},   
-    { name: "Oct", num: 10, img: "10.png"},  
-    { name: "Nov", num: 11, img: "11.png"},   
-    { name: "Dec", num: 12, img: "12.png"} ]
+  { name: "Jan", num: 1, img: "months/1.png"},   
+    { name: "Feb", num: 2, img: "months/2.png"},   
+    { name: "Mar", num: 3, img: "months/3.png"},   
+    { name: "Apr", num: 4, img: "months/4.png"},   
+    { name: "May", num: 5, img: "months/5.png"},   
+    { name: "Jun", num: 6, img: "months/6.png"},   
+    { name: "Jul", num: 7, img: "months/7.png"},   
+    { name: "Aug", num: 8, img: "months/8.png"},   
+    { name: "Sep", num: 9, img: "months/9.png"},   
+    { name: "Oct", num: 10, img: "months/10.png"},  
+    { name: "Nov", num: 11, img: "months/11.png"},   
+    { name: "Dec", num: 12, img: "months/12.png"} ]
+
 
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().getMonth() + 1;
@@ -21,8 +21,13 @@ const months = [
 
 <div class="months-grid">
     {#each months as month}
+<<<<<<< HEAD
       <a href="/month/{month.num}" class="month-card">
         <h2> <img alt="The icon" src={month.img} style="width: 100%; height: auto;" />  </h2>
+=======
+      <a href="/month" class="month-card">
+        <h2> <img alt="The icon" src={month.img} style="max-width: 100%; height: auto;" />  </h2>
+>>>>>>> 066adc1692020dd71bc70e3c8f56d78f0a8a11e4
       </a>
     {/each}
   </div>
