@@ -160,7 +160,7 @@ function groupByTime(events) {
     width: 90%;
     left: 5%;
     
-    /* Add these new properties for grid layout */
+    /* fixes the two events in the same hour*/
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 10px;
