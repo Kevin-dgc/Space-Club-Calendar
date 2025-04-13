@@ -21,17 +21,6 @@
     $: monthIndex = parseInt($page.url.searchParams.get('monthIndex') || '0');
     $: selectedMonth = months[monthIndex];
 
-<<<<<<< HEAD
-    $: len = parseInt($page.url.searchParams.get('curLen'));
-    $: num = parseInt($page.url.searchParams.get('curNum'));
-
-</script>
-<h1>Num: {num} Len : {len}</h1>
-
-<style>
-
-</style>
-=======
     $: days = Array.from({ length: selectedMonth.days }, (_, i) => i + 1);
     
     $: firstDayOfMonth = new Date(currentYear, selectedMonth.num - 1, 1).getDay();
@@ -126,4 +115,3 @@
     text-overflow: ellipsis;
   }
   </style>
->>>>>>> 7b09fe63453740604edfd011c41798c6ef5d595f
