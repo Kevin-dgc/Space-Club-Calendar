@@ -134,8 +134,7 @@ function groupEventsByTime(events, date) {
 
 {#each Array.from(groupEventsByTime(dataList, curDate).entries()) as [time, events]}
   {#each events as event, index}
-    <div class="box" style="position: absolute; top: {totalY(time) + randY()}px; 
-left: {getHorizontalOffset(index)}px;">
+    <div class="box" style="position: absolute; top: {totalY(time) + randY()}px; left: {getHorizontalOffset(index)}px;">
       <h2>Org: {event.org}, Event: {event.name}</h2>
     </div>
   {/each}
