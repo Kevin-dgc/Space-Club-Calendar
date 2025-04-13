@@ -22,6 +22,8 @@ const months = [
 <div class="months-grid">
     {#each months as month}
       <a href="/month/{month.number}" class="month-card">
+      class="month-item {currentMonth === month.number ? 'current' : ''}"
+      style="transform: rotate({month.angle}deg) translate(0, -160px) rotate(-{month.angle}deg);"
         <h2>{month.name}</h2>
       </a>
     {/each}
