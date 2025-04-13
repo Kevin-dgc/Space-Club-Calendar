@@ -43,6 +43,13 @@
     return ((hour - 8) * 100) + 50 + randY();
   }
 
+  function randPlanet(){
+    return Math.floor(Math.random() * (7 - 1 + 1)) + 1;
+  }
+
+  let planetUrl = `/planet/p${randPlanet()}.png`;
+  let dataList = getData();
+
 </script>
 
 <style>
@@ -51,7 +58,7 @@
         padding: 0;
         min-height: 100vh;  
         background-color: #0E3E7E;
-        background-image: url('/planet/p1.png');
+        background-image: url(planetUrl);
         background-repeat: no-repeat;
         background-position: center center;  
         background-size: cover; 
@@ -59,6 +66,7 @@
     
     .main-title{
         text-align: center;
+        color: white;
     }
     .time-line{
         justify-content: left;
@@ -94,6 +102,14 @@
 
 </style>
 
+<svelte:head>
+    <style>
+        body {
+            background-image: url("/planet/p1.png");
+        }
+    </style>
+</svelte:head>
+
 <!-- Start of Page V -->
 
 <a href="/month" class="back-button">← Back to Months</a> <!-- this always goes to JAN fix idk-->
@@ -117,7 +133,7 @@
     <h1 class="time-marker" style="top: 1150px;">7:00 PM</h1>
     <h1 class="time-marker" style="top: 1250px;">8:00 PM</h1>
 </div>
-{#each getData() as data}
+{#each dataList as data}
     {#if data.date == curDate}
         <div class="box">
             <h2 style="top: {totalY(data.time)}, left: {randX()}"> 

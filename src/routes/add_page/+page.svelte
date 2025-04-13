@@ -13,11 +13,12 @@ let description = '';
 // This function is called when the "Add" button is clicked.
 // It calls the imported function with the six parameters.
 function handleAdd() {
+    console.log("STARTING HANDLEADD");
     if(org == '' || name == '' || date == '' || time == '' || link == '' || description == ''){
         // tell user to input all data
     }
     else{
-        addEntry(org, name, date, time, link, description);
+        addEvent(org, name, date, time, link, description);
         org = '';
         name = '';
         date = '';

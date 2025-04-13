@@ -17,7 +17,7 @@
       { name: "November", num: 11, days: 30, img: "months/11.png"},   
       { name: "December", num: 12, days: 31, img: "months/12.png"} 
     ];
-    
+
     const currentYear = new Date().getFullYear();
     
     $: monthIndex = parseInt($page.url.searchParams.get('monthIndex') || '0');
