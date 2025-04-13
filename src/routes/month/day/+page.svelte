@@ -8,7 +8,7 @@
     $: curDate = $page.url.searchParams.get('date') || "";
 
     function randX(){
-        return Math.floor(Math.random() * (1000 - 100 + 1)) + 100;
+        return Math.floor(Math.random() * 60) + 150
     }
 
     function randY(){
@@ -16,23 +16,46 @@
     }
 
   function totalY(time) {
-    let parts = time.split(":");
-    let zone = time.split(" ");
-    let hour = +time;
-    if(zone == 'PM'){
-        hour += 12;
+    const [timePart, period] = time.split(" ");
+    const [hours, minutes] = timePart.split(":").map(num => parseInt(num, 10));
+  
+    // change it to 24-hour format because the plus 12 by itself wasnt working for some reason
+    let hour24 = hours;
+    if (period === "PM" && hours < 12) {
+        hour24 += 12;
+    } else if (period === "AM" && hours === 12) {
+     hour24 = 0;
     }
-    if(hour > 12){
-        return; //This is bad, we support 8-8 only
-    }
-    return Math.floor((hour - 8) * 100) + 50 + randY();
+
+     // Calculate position ask kev if this is okay when im done (so for example 8AM is at 50px, each hour adds 100px)
+    const hourOffset = hour24 - 8; // 8AM is our starting point
+    const minuteOffset = minutes / 60;
+    return Math.floor((hourOffset + minuteOffset) * 100) + 50;
 }
 
-  function randPlanet(){
+
+function randPlanet(){
     return Math.floor(Math.random() * (7 - 1 + 1)) + 1;
-  }
+}
 
   let dataList = getData();
+
+  function getEventOffset(index) {
+  return index * 40;
+}
+
+function groupEventsByTime(events, date) {
+  const timeMap = new Map();
+  
+  events.filter(event => event.date === date).forEach(event => {
+    if (!timeMap.has(event.time)) {
+      timeMap.set(event.time, []);
+    }
+    timeMap.get(event.time).push(event);
+  });
+  
+  return timeMap;
+}
 
 </script>
 
@@ -58,10 +81,6 @@
         color: white;
     }
 
-    .time-maker{
-        position: absolute;
-    }
-
     .back-button {
     display: inline-block;
     margin-bottom: 20px;
@@ -74,11 +93,13 @@
 
     .box{
         color:black;
+        float: right;
         /* we can make this a rocket ship ^ */
     }
 
     h2{
         color:white;
+
     }
 </style>
 
@@ -107,7 +128,7 @@
 </div>
 {#each dataList as data}
     {#if data.date == curDate}
-        <div class="box" style="position: absolute; top: {totalY(data.time)}px; left: {randX()}px;">
+        <div class="box" style="position: absolute; top: {totalY(data.time)}px; left: 150px;">
             <h2>Org: {data.org}, Event: {data.name}</h2>
         </div>
     {/if}
