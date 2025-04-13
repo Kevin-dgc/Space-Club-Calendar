@@ -19,48 +19,57 @@ const months = [
 <h1>{currentYear}</h1>
 
 <div class="months-grid">
-    {#each months as month}
-      <a href="/month" class="month-card">
-        <h2> <img alt="The icon" src={month.img} style="max-width: 100%; height: auto;" />  </h2>
-      </a>
-    {/each}
-  </div>
+  {#each months as month, i}
+    <a href="/month?monthIndex={i}" class="month-card">
+      <h2>
+        <img alt="{month.name}" src={month.img} style="max-width: 100%; height: auto;" />
+        <div class="month-name">{month.name}</div>
+      </h2>
+    </a>
+  {/each}
+</div>
+
 <style>
+.months-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
   .months-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
+    grid-template-columns: repeat(2, 1fr);
   }
-  @media (max-width: 768px) {
-    .months-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  .month-card {
-    background-color: #f5f5f5;
-    border-radius: 8px;
-    padding: 5px;
-    text-align: center;
-    text-decoration: none;
-    color: #333;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  .month-card:hover {
-    transform: translateY(-5px);
-    background-color: #e8f4ff;
-  }
-  
-  h1 {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  
-  h2 {
-    margin: 0;
-  }
+}
+
+.month-card {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.month-card:hover {
+  transform: translateY(-5px);
+  background-color: #e8f4ff;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+h2 {
+  margin: 0;
+}
+
+.month-name {
+  margin-top: 5px;
+  font-size: 1.2rem;
+}
 </style>
