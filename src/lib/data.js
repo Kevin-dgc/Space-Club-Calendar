@@ -43,7 +43,7 @@ export function find_by_date(date_) {
 
 export async function saveJSON() {
     try {
-        const res = await fetch('http://localhost:5173/api/data', {
+        const res = await fetch('src/lib/api/data/+server.js', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data_list)
@@ -56,7 +56,7 @@ export async function saveJSON() {
 
 export async function fetchJSON() {
     try {
-        const res = await fetch('http://localhost:5173/api/data');
+        const res = await fetch('src/lib/api/data/+server.js');
         data_list = await res.json();
         return data_list;
     } catch (err) {

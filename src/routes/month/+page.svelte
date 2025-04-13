@@ -2,7 +2,10 @@
 
 <script>
     import { page } from '$app/stores';
-    
+    import { fetchJSON } from '$lib/data.js';
+
+    fetchJSON();
+
     const months = [   
       { name: "January", num: 1, days: 31, img: "months/1BGRemove.png"},   
       { name: "February", num: 2, days: 28, img: "months/2.png"},   
