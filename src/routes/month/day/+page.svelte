@@ -15,39 +15,17 @@
         return Math.floor(Math.random() * (25 - -25 + 1)) + -25;
     }
 
+    function totalY(time) {
+        let parts = time.split(":");
+        let hour = +time;
+        return Math.floor((hour - 8) * 100) + 50 + randY();
+    }
 
-    let items = [
-        { time: "8:00", Y: "50" },
-        { time: "9:00", Y: "150" },
-        { time: "10:00", Y: "250" },
-        { time: "11:00", Y: "350" },
-        { time: "12:00", Y: "450" },
-        { time: "13:00", Y: "550" },
-        { time: "14:00", Y: "650" },
-        { time: "15:00", Y: "750" },
-        { time: "16:00", Y: "850" },
-        { time: "17:00", Y: "950" },
-        { time: "18:00", Y: "1050" },
-        { time: "19:00", Y: "1150" },
-        { time: "20:00", Y: "1250" }
-    ];
+    function randPlanet(){
+        return Math.floor(Math.random() * (7 - 1 + 1)) + 1;
+    }
 
-  function parseY(time){
-    // time ex) 9:00PM
-    hour = +time.split(":");
-    return Math.floor((hour - 8) * 100) + 50;
-  }
-
-  function totalY(time){
-    hour = +time.split(":");
-    return Math.floor((hour - 8) * 100) + 50 + randY();
-  }
-
-  function randPlanet(){
-    return Math.floor(Math.random() * (7 - 1 + 1)) + 1;
-  }
-
-  let dataList = getData();
+    let dataList = getData();
 
 </script>
 
