@@ -120,47 +120,78 @@ function groupByTime(events) {
 </svelte:head>
 
 <style>
-  :global(html, body) {
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;  
-        background-color: #0E3E7E;
-        background-image: url(/planet/p1.png);
-        background-repeat: no-repeat;
-        background-position: center center;  
-        background-size: cover; 
-    }
-    
-    .main-title{
-        text-align: center;
-        color: white;
-    }
-    .time-line{
-        justify-content: left;
-        line-height: 1.3;
-        color: white;
-    }
-
-    .back-button {
-    display: inline-block;
-    margin-bottom: 20px;
-    text-decoration: none;
-    color: #333;
-    padding: 5px 10px;
-    border-radius: 4px;
-    background-color: #f0f0f0;
-    }
-
-    .box{
-        color:black;
-        float: right;
-        /* we can make this a rocket ship ^ */
-    }
-
-    h2{
-        color:white;
-
-    }
+  /* Custom styles - these work with Bootstrap only so dont mess with them pls */
+  :global(body) {
+      background-color: #0E3E7E;
+      background-image: url(/planet/p1.png);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      min-height: 100vh;
+  }
+  
+  .calendar-grid {
+      height: 1300px; /* 13 hours * 100px */
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+  }
+  
+  .hour-line {
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .time-labels {
+      position: relative;
+      height: 1300px;
+  }
+  
+  .hour-label {
+      position: absolute;
+      right: 10px;
+      color: white;
+      font-weight: bold;
+  }
+  
+  .event-group {
+      position: absolute;
+      width: 90%;
+      left: 5%;
+  }
+  
+  .event-card {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-left: 4px solid #0d6efd;
+      margin-bottom: 5px;
+      transition: transform 0.2s;
+      z-index: 1;
+  }
+  
+  .event-card:hover {
+      transform: scale(1.02);
+      z-index: 2;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-body {
+      padding: 0.75rem;
+  }
+  
+  .card-title {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+  }
+  
+  .card-subtitle {
+      font-size: 0.8rem;
+  }
+  
+  .card-text {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+  }
 </style>
 
 <!-- Start of Page V -->
@@ -185,19 +216,16 @@ function groupByTime(events) {
       
       <div class="col-md-10">
           <div class="calendar-grid position-relative">
-              <!-- Hour grid lines -->
               {#each Array.from({ length: 13 }, (_, i) => i) as hour}
                   <div class="hour-line" style="top: {hour * 100}px"></div>
               {/each}
               
-              <!-- Events -->
               {#each timeGroups as group, groupIndex}
                   {#if group.parsedTime}
                       <div class="event-group" 
                            style="top: {((group.parsedTime.hours - 8) + group.parsedTime.minutes/60) * 100}px">
                           {#each group.events as event, eventIndex}
-                              <div class="event-card card mb-2" 
-                                   style="transform: translateX({eventIndex * 15}px)">
+                              <div class="event-card card mb-2" style="transform: translateX({eventIndex * 15}px)">
                                   <div class="card-body">
                                       <h5 class="card-title">{event.name}</h5>
                                       <h6 class="card-subtitle mb-2 text-muted">{event.time} - {event.org}</h6>
