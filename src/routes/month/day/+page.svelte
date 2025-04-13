@@ -160,7 +160,7 @@ function groupByTime(events) {
 
 <!-- Start of Page V -->
 
-<a href="/month" class="back-button">← Back to Months</a> <!-- this always goes to JAN fix idk-->
+<a href="/" class="back-button">← Back to Months</a> <!-- this always goes to JAN fix idk-->
 
 <div class="main-title">
     <h1>{curDate}</h1> 
