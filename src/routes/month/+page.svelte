@@ -26,7 +26,34 @@
     $: firstDayOfMonth = new Date(currentYear, selectedMonth.num - 1, 1).getDay();
     $: blankDays = Array(firstDayOfMonth).fill(null);
   </script>
-  
+  <div class="calendar">
+    <div class="weekday-labels">
+      <div>Sun</div>
+      <div>Mon</div>
+      <div>Tue</div>
+      <div>Wed</div>
+      <div>Thu</div>
+      <div>Fri</div>
+      <div>Sat</div>
+    </div>
+        
+    <div class="days-grid">
+        {#each blankDays as _, i}
+          <div class="day blank"></div>
+        {/each}
+        
+        {#each days as day}
+          <div class="day">
+            <div class="day-number">{day}</div>
+            <div class="day-events">
+              {#each monthEvents.filter(event => new Date(event.date).getDate() === day) as event}
+                <div class="event-pill">{event.title}</div>
+              {/each}
+            </div>
+          </div>
+        {/each}
+      </div>
+    </div>
   <style>
    
   </style>
