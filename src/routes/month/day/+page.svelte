@@ -44,6 +44,19 @@ function randPlanet(){
   return index * 40;
 }
 
+function groupEventsByTime(events, date) {
+  const timeMap = new Map();
+  
+  events.filter(event => event.date === date).forEach(event => {
+    if (!timeMap.has(event.time)) {
+      timeMap.set(event.time, []);
+    }
+    timeMap.get(event.time).push(event);
+  });
+  
+  return timeMap;
+}
+
 </script>
 
 <style>
