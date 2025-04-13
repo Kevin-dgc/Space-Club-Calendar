@@ -1,7 +1,7 @@
 <script>
 const months = [   
-  { name: "Jan", num: 1, img: "months/1.png"},   
-    { name: "Feb", num: 2, img: "months/2.png"},   
+    { name: "Jan", num: 1, img: "months/1.png"},   
+    { name: "Feb", num: 28, img: "months/2.png"},   
     { name: "Mar", num: 3, img: "months/3.png"},   
     { name: "Apr", num: 4, img: "months/4.png"},   
     { name: "May", num: 5, img: "months/5.png"},   
@@ -15,19 +15,13 @@ const months = [
 
 
     const currentYear = new Date().getFullYear();
-    const currentMonth = new Date().getMonth() + 1;
 </script>
 <h1>{currentYear}</h1>
 
 <div class="months-grid">
     {#each months as month}
-<<<<<<< HEAD
-      <a href="/month/{month.num}" class="month-card">
-        <h2> <img alt="The icon" src={month.img} style="width: 100%; height: auto;" />  </h2>
-=======
       <a href="/month" class="month-card">
         <h2> <img alt="The icon" src={month.img} style="max-width: 100%; height: auto;" />  </h2>
->>>>>>> 066adc1692020dd71bc70e3c8f56d78f0a8a11e4
       </a>
     {/each}
   </div>

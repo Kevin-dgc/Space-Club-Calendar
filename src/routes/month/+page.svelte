@@ -2,32 +2,10 @@
 <script>
     import { page } from '$app/stores';
 
-$: monthNumber = parseInt($page.params.month);
-$: year = new Date().getFullYear();
+    $: monthNum = parseInt($page.url.searchParams.get('month[2].num'));
 
-$: monthName = new Date(year, monthNumber - 1, 1).toLocaleString('default', { month : 'long'});
-$: daysInMonth = new Date(year, monthNumber, 0).getDate();
-$: firstDayOfWeek = new Date(year, monthNumber - 1, 1).getDay(); 
-
-function generateCalendarDays() {
-    const days =  [];
-
-    for (let i = 0; i < firstDayOfWeek; i++) {
-        days.push({ day: null, isCurrentMonth: false});
-    }
-
-    for (let day = 1; day <= daysInMonth; day++) {
-        days.push({
-            day,
-            isCurrentMonth: true,
-            date: new Date(year, monthNumber - 1, day)
-        });
-    }
-
-    return day;
-}
 </script>
-
+<h1>Month: {monthNum}</h1>
 
 <style>
 
