@@ -74,6 +74,7 @@
   }
   
   h1 {
+    color: white;
     text-align: center;
     margin-bottom: 30px;
   }
@@ -94,6 +95,7 @@
   
   .weekday-labels {
     display: grid;
+    color: white;
     grid-template-columns: repeat(7, 1fr);
     text-align: center;
     font-weight: bold;
