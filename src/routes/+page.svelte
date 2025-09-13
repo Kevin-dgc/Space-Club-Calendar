@@ -103,6 +103,7 @@ const currentYear = new Date().getFullYear();
     text-align: center;
   }
   :global(body) {
+    background-color: black;
     background-image: url('frontPageBG.png');
     background-size: cover;
   }
